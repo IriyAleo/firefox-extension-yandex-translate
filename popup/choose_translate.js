@@ -23,7 +23,7 @@ function translate_postprocess() {
 
 		    pre_utl += "/" + url_array[idx];
 
-			if (url_array[idx] == "https") {
+			if (url_array[idx] == "https" || url_array[idx] == "http") {
 				break;
 			}
 		}
@@ -70,7 +70,7 @@ function translate_process() {
 		{
 			console.log("Current Translate/PrefixUrl: ", localStorage.getItem("Translate/PrefixUrl"));
 			pre_url = localStorage.getItem("Translate/PrefixUrl");
-			if (pre_url == "") {
+			if (pre_url == "" || pre_url == null || pre_url.includes("translated.turbopages.org") == false || pre_url.includes("/http") == false) {
 				need_translate = 1;
 			}
 		}
@@ -84,7 +84,7 @@ function translate_process() {
 			tab.url = "https:/"
 
 			for (var idx = 0; idx < url_array.length; idx++) {
-				if (url_array[idx] == "https") {
+				if (url_array[idx] == "https" || url_array[idx] == "http") {
 					suffix_url = 1;
 					continue;
 				}
